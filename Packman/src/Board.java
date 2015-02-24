@@ -7,10 +7,7 @@
 
 import java.awt.Color;
 import java.awt.Graphics;
-import java.awt.Point;
 import java.util.ArrayList;
-import java.util.Timer;
-import java.util.TimerTask;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
@@ -20,23 +17,30 @@ import javax.swing.JPanel;
  */
 public class Board extends JFrame{
     private int cellWidth = 30, cellHeight = 30;
+    DrawBoard drw ;
     public Board(String name, ArrayList<ArrayList<Character>> map){
         super(name);
         setSize(map.size()*cellWidth, map.get(0).size()*cellHeight);  
-        DrawBoard drw = new DrawBoard();
+        drw = new DrawBoard();
         setContentPane(drw);
-        Timer timer = new Timer();
-        timer.scheduleAtFixedRate(new TimerTask() {
-
-            @Override
-            public void run() {
-                drw.repaint();
-              
-            }
-        }, 80, 80);
+//        Timer timer = new Timer();
+//        timer.scheduleAtFixedRate(new TimerTask() {
+//
+//            @Override
+//            public void run() {
+//                drw.repaint();
+//              
+//            }
+//        }, 30, 30);
     }
-   
+   public void movePackman(Packman packman, Packman.Moves move){
+	   
+	   packman.move(move);
+	   drw.repaint();
+   }
     class DrawBoard extends JPanel{
+    	int counter = 0;
+    	boolean growing = true;
         @Override
         protected void paintComponent(Graphics grphcs) {
 //            System.out.println("hi");
@@ -55,7 +59,7 @@ public class Board extends JFrame{
                     }
                     else if(c=='P'){
                         grphcs.setColor(Color.YELLOW);
-                        grphcs.fillArc(i*(int)(cellWidth), j*(int)(cellHeight), (int)(cellWidth), (int)cellHeight, 30, 330);
+                        grphcs.fillArc(i*(int)(cellWidth), j*(int)(cellHeight), (int)(cellWidth), (int)cellHeight, 30 - counter, 300 + 2*counter);
                     }
                     else if(c=='.'){
                         grphcs.setColor(Color.WHITE);
@@ -64,6 +68,15 @@ public class Board extends JFrame{
                     }
                 }
             }
+            
+            if(growing)
+            	counter +=5;
+            else
+            	counter -=5;
+            if(counter > 30)
+            	growing = false;
+            else if(counter < 0)
+            	growing = true;
         }
         
     }

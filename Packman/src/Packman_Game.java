@@ -20,8 +20,8 @@ public class Packman_Game {
     private ArrayList<Point> goalPositoins;
     String layout;
     String type;
-    Packman packmam;
-    
+    Packman packman;
+    Board board;
     /**
      * @param args the command line arguments
      */
@@ -36,9 +36,10 @@ public class Packman_Game {
        int routeSize = route.size();
        int numberOfGoals = packman.goalPositoins.size();
        for(int i=0; i<route.size(); i++){
-           System.out.println(route.get(i));
-           packman.packmam.move(route.get(i));
-           int indx = packman.goalPositoins.indexOf(packman.packmam.pos);
+           //System.out.println(route.get(i));
+//           packman.packmam.move(route.get(i));
+           packman.board.movePackman(packman.packman, route.get(i));
+           int indx = packman.goalPositoins.indexOf(packman.packman.pos);
            if(indx != -1){
                packman.goalPositoins.remove(indx);
            }
@@ -60,8 +61,8 @@ public class Packman_Game {
         
         map = readLayout(layout + ".lay");
         findGoals();
-        packmam = new Packman(map);
-        Board board = new Board("Packman", map);
+        packman = new Packman(map);
+        board = new Board("Packman", map);
         board.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);        
         board.setVisible(true);        
     }
