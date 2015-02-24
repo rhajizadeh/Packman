@@ -6,8 +6,7 @@
 
 
 import java.awt.Point;
-import sun.misc.Queue;
-
+import java.util.Queue;
 /**
  *
  * @author Roozbeh Hajizadeh

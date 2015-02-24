@@ -8,8 +8,6 @@
 import java.awt.Point;
 import java.util.ArrayList;
 import java.util.Stack;
-import sun.misc.Queue;
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 /**
  *
@@ -28,7 +26,7 @@ public class Search {
         else if(_type.equals("bfs")){
             return BFS(packman, goalPositoins);
         }
-        else if(_type.equals("rbfs")){
+        else if(_type.equals("rdfs")){
             return RDFS(packman, goalPositoins);
         }
         else if(_type.equals("astar")){
