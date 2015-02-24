@@ -43,22 +43,23 @@ public class Board extends JFrame{
            // super.paintComponent(grphcs); //To change body of generated methods, choose Tools | Templates.
             grphcs.setColor(Color.BLACK);
             grphcs.fillRect(0, 0, getWidth(), getHeight());
-            double cellWidth = getWidth() / Packman_Game.map.size();        
-            
+            double cellWidth = getWidth() *1.0 / Packman_Game.map.size();        
+            double cellHeight = getHeight()*1.0 / Packman_Game.map.get(0).size();
             for(int i=0;i<Packman_Game.map.size();i++){
-                double cellHeight = getHeight() / Packman_Game.map.get(i).size();
+                
                 for(int j=0;j<Packman_Game.map.get(i).size();j++){
-                    if(Packman_Game.map.get(i).get(j)=='%'){
+                	char c = Packman_Game.map.get(i).get(j); 
+                    if(c =='%'){
                         grphcs.setColor(Color.BLUE);
-                        grphcs.fillRect((int)(i*cellWidth), (int)(j*cellHeight), (int)(cellWidth), (int)cellHeight);
+                        grphcs.fillRect(i*(int)(cellWidth), j*(int)(cellHeight), (int)(cellWidth), (int)cellHeight);
                     }
-                    else if(Packman_Game.map.get(i).get(j)=='P'){
+                    else if(c=='P'){
                         grphcs.setColor(Color.YELLOW);
-                        grphcs.fillArc((int)(i*cellWidth), (int)(j*cellHeight), (int)(cellWidth), (int)cellHeight, 30, 330);
+                        grphcs.fillArc(i*(int)(cellWidth), j*(int)(cellHeight), (int)(cellWidth), (int)cellHeight, 30, 330);
                     }
-                    else if(Packman_Game.map.get(i).get(j)=='.'){
+                    else if(c=='.'){
                         grphcs.setColor(Color.WHITE);
-                        grphcs.fillArc((int)(i*(cellWidth) + cellWidth/4), (int)(j*(cellHeight) + cellHeight/4)
+                        grphcs.fillArc(i*(int)((cellWidth) + cellWidth/4), j*(int)((cellHeight) + cellHeight/4)
                                 , (int)(cellWidth/2), (int)cellHeight/2, 0, 360);
                     }
                 }
