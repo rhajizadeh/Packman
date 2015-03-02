@@ -63,7 +63,7 @@ public class Board extends JFrame{
                     }
                     else if(c=='.'){
                         grphcs.setColor(Color.WHITE);
-                        grphcs.fillArc(i*(int)((cellWidth) + cellWidth/4), j*(int)((cellHeight) + cellHeight/4)
+                        grphcs.fillArc(i*(int)(cellWidth) + (int)cellWidth/4, j*(int)(cellHeight) + (int)cellHeight/4
                                 , (int)(cellWidth/2), (int)cellHeight/2, 0, 360);
                     }
                 }
