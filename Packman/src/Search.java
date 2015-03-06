@@ -32,6 +32,9 @@ public class Search {
         else if(_type.equals("astar")){
             return Astar(packman, goalPositoins);
         }
+        else if(_type.equals("ucs")){
+            return UCS(packman, goalPositoins);
+        }
         return null;
     }
     private ArrayList<Packman.Moves> RDFS(Packman packman, ArrayList<Point> goalPositoins){
@@ -80,7 +83,11 @@ public class Search {
         
         return null;
     }
-    public class Node{
+	private ArrayList<Packman.Moves> UCS(Packman packman, ArrayList<Point> goalPositoins){
+	        
+	        return null;
+	    }
+	public class Node{
         public Point _p;
         public Packman.Moves _move;
         public Node _father;
